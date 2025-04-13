@@ -1,0 +1,15 @@
+{
+  "name": "automatizacion",
+  "version": "1.0.0",
+  "description": "test de practica",
+  "main": "index.js",
+  "scripts": {
+    "prueba-firefox": "cypress run --spec cypress/e2e/smokeTest/zeroBank.cy.js --browser firefox",
+    "pruebas-edge": "cypress run --spec cypress/e2e/smokeTest/zeroBank.cy.js --browser edge"
+  },
+  "author": "JeanSalinas",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  }
+}
