@@ -1,8 +1,16 @@
 //Credentials login
-const validCredentials = { 'username': "username", "password": "password" }
-const usernameInvalid = { 'username': "user", "password": "password" }
-const passwordInvalid = { 'username': "username", "password": "keyInvalid" }
-
+const validCredentials = {
+    username: Cypress.env('validUsername'),
+    password: Cypress.env('validPassword')
+}
+const InvalidUserCredentials = {
+    username: Cypress.env('invalidUsername'),
+    password: Cypress.env('validPassword')
+}
+const invalidPasswordCredentials = {
+    username: Cypress.env('validUsername'),
+    password: Cypress.env('invalidPassword')
+}
 
 const login = ((credentials) => {
     cy.get('#signin_button').click()
@@ -33,11 +41,11 @@ describe("Test auotmation - Zero Bank", () => {
             login(validCredentials)
         })
         it('invalid credential "username"', () => {
-            login(usernameInvalid)
+            login(InvalidUserCredentials)
             cy.get('.alert').should('be.visible')
         })
         it('invalid credential "password"', () => {
-            login(passwordInvalid)
+            login(invalidPasswordCredentials)
             cy.get('.alert').should('be.visible')
         })
     })//describe login
