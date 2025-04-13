@@ -41,7 +41,7 @@ describe("Test auotmation - Zero Bank", () => {
             cy.get('.alert').should('be.visible')
         })
     })//describe login
-    describe.only('Validation of transaction', () => {
+    describe('Validation of transaction', () => {
         it('Transaction bank', () => {
             login(validCredentials)
             cy.get('#transfer_funds_tab > a').click()
@@ -52,6 +52,18 @@ describe("Test auotmation - Zero Bank", () => {
             cy.get('#btn_submit').click()
             cy.get('#btn_submit').click()
             cy.get('.alert').should('contain', 'You successfully submitted your transaction.')
+        })
+    })
+
+    describe.only('Validation graphic', () => {
+        it('Validation Graphic', () => {
+            login(validCredentials)
+            cy.get('#money_map_tab > a').click()
+            cy.get('#ext-sprite-1263').should('be.visible')
+            cy.get('#ext-sprite-1175 > tspan').click()
+            cy.get('#ext-sprite-1263').should('not.be.visible')
+            cy.get('#ext-sprite-1357 > tspan').click()
+            cy.get('#ext-sprite-1263').should('be.visible')
         })
     })
 })//describe principal
